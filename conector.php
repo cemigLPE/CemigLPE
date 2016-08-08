@@ -1,14 +1,9 @@
 <?php
 
-// define("SERVER", "localhost");
-// define("USER", "root");
-// define("PASS", "");
-// define("DB_NAME", "coc");
-
- define("SERVER", "10.20.2.191:3306");
- define("USER", "phpPresenca");
- define("PASS", "Reuni@o");
- define("DB_NAME", "LISTA_PRESENCA");
+define("SERVER", "localhost");
+define("USER", "root");
+define("PASS", "");
+define("DB_NAME", "");
 
 $link = mysql_connect(SERVER, USER, PASS);
 
