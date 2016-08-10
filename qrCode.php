@@ -25,19 +25,22 @@
 
 	//Geração do QR Code
 	include("phpqrcode/qrlib.php");
-	QRCode::png("http://localhost:81/LISTA_PRESENCA/assinaListaPresenca.php?idReuniao=" . $idReuniao, "qrCodes/$qrCode", QR_ECLEVEL_H, 4);
+	QRCode::png("http://presencaeletronica-lpe.rhcloud.com/assinaListaPresenca.php?idReuniao=" . $idReuniao, "qrCodes/$qrCode", QR_ECLEVEL_H, 4);
 
 	//Envio de email para o usuario
-	$bodytext = "<p>Prezado(a) $organizador,</p><p>A reunião entitulada <strong>$nomeReuniao</strong> foi marcada para o dia $dataReuniao, de $horaInicio até $horaTermino.</p><p>Utilize o QR Code em anexo em sua apresentação para que os presentes possam ter acesso à lista de presença.</p><p>Atenciosamente,<br/>CEMIG Reuniões.</p>";
+	$bodytext = "<p>Prezado(a) $organizador,</p><p>A reunião entitulada <strong>$nomeReuniao</strong> foi marcada para o dia $dataReuniao, de $horaInicio até $horaTermino.</p><p>Utilize o QR Code em anexo em sua apresentação para que os presentes possam ter acesso à lista de presença.</p><img alt='QRCode' src='cid:qrCode'><p>Atenciosamente,<br/>CEMIG Reuniões.</p>";
 	include("PHPMailer-master/PHPMailerAutoload.php");
 	$email = new PHPMailer();
 	$email->isHTML(true);
-	$email->From      = 'msj_bh@hotmail.com';
-	$email->FromName  = 'CEMIG Reuniões';
-	$email->Subject   = 'Reuniao Agendada - ' . $nomeReuniao;
-	$email->Body      = $bodytext;
+	$email->CharSet = 'UTF-8';
+	$email->Encoding = 'base64';
+	$email->From = 'msj_bh@hotmail.com';
+	$email->FromName = 'CEMIG Reuniões';
+	$email->Subject = 'Reuniao Agendada - ' . $nomeReuniao;
 	$email->AddAddress($endEmail);
 	$email->AddAttachment('qrCodes/$qrCode');
+	$email->AddEmbeddedImage('qrCodes/$qrCode', 'qrCode', '$qrCode');
+	$email->Body = $bodytext;
 	$email->send();
 
 ?>
