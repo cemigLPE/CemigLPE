@@ -23,12 +23,14 @@
 	$horaTermino = $row['hora_termino'];
 	$organizador = $row['organizador'];
 
+	$caminhoQRCode = realpath(dirname(__FILE__)) . "/qrCodes/$qrCode";
+
 	//Geração do QR Code
 	include("phpqrcode/qrlib.php");
 	QRCode::png("http://presencaeletronica-lpe.rhcloud.com/assinaListaPresenca.php?idReuniao=" . $idReuniao, "qrCodes/$qrCode", QR_ECLEVEL_H, 4);
 
 	//Envio de email para o usuario
-	$bodytext = "<p>Prezado(a) $organizador,</p><p>A reunião entitulada <strong>$nomeReuniao</strong> foi marcada para o dia $dataReuniao, de $horaInicio até $horaTermino.</p><p>Utilize o QR Code em anexo em sua apresentação para que os presentes possam ter acesso à lista de presença.</p><img alt='QRCode' src='cid:qrCode'><p>Ao final da reunião, você poderá baixar a lista de presença por meio do seguinte link: <a href='http://presencaeletronica-lpe.rhcloud.com/sendPDF.php?idReuniao=" . $idReuniao . "'>Download Lista</a></p><p>Atenciosamente,<br/>Presença Eletrônica.</p>";
+	$bodytext = "<p>Prezado(a) $organizador,</p><p>A reunião entitulada <strong>$nomeReuniao</strong> foi marcada para o dia $dataReuniao, de $horaInicio até $horaTermino.</p><p>Utilize o QR Code em anexo em sua apresentação para que os presentes possam ter acesso à lista de presença.</p><img alt='QRCode' src='" . $caminhoQRCode . "'><p>Ao final da reunião, você poderá baixar a lista de presença por meio do seguinte link: <a href='http://presencaeletronica-lpe.rhcloud.com/sendPDF.php?idReuniao=" . $idReuniao . "'>Download Lista</a></p><p>Atenciosamente,<br/>Presença Eletrônica.</p>";
 	include("PHPMailer-master/PHPMailerAutoload.php");
 	$email = new PHPMailer();
 	$email->isHTML(true);
@@ -38,7 +40,7 @@
 	$email->FromName = 'Presença Eletrônica';
 	$email->Subject = 'Lista de Presença do seu Evento';
 	$email->AddAddress($endEmail);
-	$email->AddAttachment(realpath(dirname(__FILE__)) . '/qrCodes/$qrCode');
+	$email->AddAttachment($caminhoQRCode);
 	$email->Body = $bodytext;
 	$email->send();
 
