@@ -1,0 +1,32 @@
+Aplicação configurada no rhcloud. Gentileza realizar o teste:
+
+http://presencaeletronica-lpe.rhcloud.com/
+
+----------------------------------------------------------------------------------------------
+
+O banco de dados poderá ser acessado através do phpmyadmin:
+
+https://presencaeletronica-lpe.rhcloud.com/phpmyadmin/
+
+usuário: admin
+senha: logico
+
+----------------------------------------------------------------------------------------------
+
+O código fonte poderá ser clonado para um repositório local através do git utilizando o “source code”:
+“ssh://578912077628e1e18100017a@presencaeletronica-lpe.rhcloud.com/~/git/presencaeletronica.git/”
+
+Após alterações realizadas e “comitadas”, elas serão atualizadas no rhcloud.
+
+As informações são obtidas na tela de login do portal rhcloud: https://openshift.redhat.com/app/login
+
+Com a conta informada pelo Marcus souto: msj_bh@hotmail.com / “logico”
+
+----------------------------------------------------------------------------------------------
+
+TODO:
+
+- 'Focus' nos campos do relatorio (no celular, para que apareca o botao 'Próximo' no teclado)
+- Verificar porque o campo Local não foi preenchido na tela de Assinatura da Lista de presença
+- Considerar a exibição dos campos de Data e Hora na mesma linha (no celular esta cada um em uma linha)
+- Corrigir o anexo do e-mail (o qrCode não está sendo enviado)

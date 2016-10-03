@@ -10,7 +10,7 @@
 					<div class="page-content">
 						<div class="page-header">
 							<h1>
-								Cadastro de Reuniões
+								Criar um novo Evento com Lista de Presença Eletrônica
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 									Preencha os dados abaixo e clique em 'Cadastrar'
@@ -42,7 +42,7 @@
 						
 								<div class="widget-box">
 									<div class="widget-header">
-										<h5 class="widget-title">Formulário de Cadastro</h5>
+										<h5 class="widget-title">Informações do evento/reunião</h5>
 									</div>
 									<div class="widget-body">
 										<form class="from-horizontal" role="form" name="cadastro_reuniao" method="post" action="javascript:func()">
@@ -50,56 +50,56 @@
 												<div class="row">
 													<div class="col-md-8">
 														<div class="form-group">
-															<label>Nome Reunião:</label><br/>
-															<input class="col-xs-12" type="text" id="nome_reuniao" name="nome_reuniao" />
+															<label>Título:</label><br/>
+															<input class="col-xs-12" type="text" id="nome_reuniao" name="nome_reuniao" tabindex="1" autofocus />
 														</div>
 													</div>
 													<div class="col-md-4">
 														<div class="form-group">
 															<label>Local:</label><br/>
-															<input class="col-xs-12" type="text" id="local" name="local" />
+															<input class="col-xs-12" type="text" id="local" name="local" tabindex="2" />
 														</div>
 													</div>
 												</div>
-												<br/><br/>
+												<br/>
 												<div class="row">
 													<div class="col-md-4">
 														<div class="form-group">
 															<label>Data:</label><br/>
-															<input class="col-xs-12 input-mask-date" type="text" id="data_reuniao" name="data_reuniao" />
+															<input class="col-xs-12 input-mask-date" type="text" id="data_reuniao" name="data_reuniao" value="<?php echo date('d/m/Y'); ?>" tabindex="3" />
 														</div>
 													</div>
 													<div class="col-md-4">
 														<div class="form-group">
 															<label>Hora Início:</label><br/>
-															<input class="col-xs-12 input-mask-time" type="text" id="hora_inicio" name="hora_inicio" />
+															<input class="col-xs-12 input-mask-time" type="text" id="hora_inicio" name="hora_inicio" tabindex="4" />
 														</div>
 													</div>
 													<div class="col-md-4">
 														<div class="form-group">
 															<label>Hora Término:</label><br/>
-															<input class="col-xs-12 input-mask-time" type="text" id="hora_termino" name="hora_termino" />
+															<input class="col-xs-12 input-mask-time" type="text" id="hora_termino" name="hora_termino" tabindex="5" />
 														</div>
 													</div>
 												</div>
-												<br/><br/>
+												<br/>
 												<div class="row">
 													<div class="col-md-6">
 														<div class="form-group">
-															<label>Organizador:</label><br/>
-															<input class="col-xs-12" type="text" id="organizador" name="organizador" />
+															<label>Nome do Organizador:</label><br/>
+															<input class="col-xs-12" type="text" id="organizador" name="organizador" tabindex="6" />
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group">
-															<label>E-mail:</label><br/>
-															<input class="col-xs-12" type="text" id="email" name="email" />
+															<label>E-mail do Organizador:</label><br/>
+															<input class="col-xs-12" type="text" id="email" name="email" tabindex="7" />
 														</div>
 													</div>
 												</div>
-												<br/><br/>
+												<br/>
 												<div class="widget-tools clearfix">
-													<button id="cadastrar" class="btn btn-block btn-success">Cadastrar</button>
+													<button id="cadastrar" class="btn btn-block btn-success" tabindex="8">Cadastrar</button>
 												</div>
 												
 											</div>
@@ -113,19 +113,6 @@
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
-
-			<div class="footer">
-				<div class="footer-inner">
-					<div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">TI/SI - CEMIG</span>
-							&copy; 2016
-						</span>
-					</div>
-				</div>
-			</div>
-
-		</div><!-- /.main-container -->
 
 <?php
 

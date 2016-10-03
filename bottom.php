@@ -1,3 +1,16 @@
+
+			<div class="footer">
+				<div class="footer-inner">
+					<div class="footer-content">
+						<span class="bigger-120">
+							Em caso de dúvidas e/ou sugestões, <a href="contato.php">entre em contato conosco</a>.
+						</span>
+					</div>
+				</div>
+			</div>
+
+		</div><!-- /.main-container -->
+
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
@@ -48,7 +61,8 @@
 		<script src="assets/js/bootstrap-colorpicker.min.js"></script>
 		<script src="assets/js/bootstrap-tag.min.js"></script>
 
-
+		<!-- Cookies -->
+		<script src="js-cookie-1.5.1/src/js.cookie.js"></script>
 
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>
@@ -58,6 +72,13 @@
 		<script type="text/javascript">
 
 			jQuery(function($){
+
+				//Na pagina da lista de presenca, preenche os campos com os cookies, caso existam
+				$('#matricula').val(Cookies.get("matricula"));
+				$('#nome_completo').val(Cookies.get("nomeCompleto"));
+				$('#funcao').val(Cookies.get("funcao"));
+				$('#empresa').val(Cookies.get("empresa"));
+				//-------------------------------------------------------------------------------
 
 				$('.input-mask-date').mask('99/99/9999');
 				$('.input-mask-time').mask('99:99');
@@ -109,9 +130,41 @@
 
 						if(codResposta == 0)
 						{
+							//Salva os cookies para que sejam utilizados posteriormente
+							Cookies.set("matricula", matricula, {expires: 30, path: "/"});
+							Cookies.set("nomeCompleto", nomeCompleto, {expires: 30, path: "/"});
+							Cookies.set("funcao", funcao, {expires: 30, path: "/"});
+							Cookies.set("empresa", empresa, {expires: 30, path: "/"});
+
 							$('html, body').animate({ scrollTop: 0 }, 'slow');
 							$("#alert_success").slideDown("fast").delay(4000).slideUp("slow");
-							//var t = setTimeout("location.href='index.php'",4000);
+							var t = setTimeout("window.close()",4000);
+						}
+						else
+						{
+							$('html, body').animate({ scrollTop: 0 }, 'slow');
+							$("#alert_error").slideDown("fast").delay(4000).slideUp("slow");
+							$("#mensagem_erro").html(partesResposta[1]);
+						}
+
+					});
+
+				});
+
+				$('#enviar_email').click(function(){
+
+					var nomeContato = $('#nome_contato').val();
+					var email = $('#email').val();
+					var tipoContato = $('#tipo_contato').val();
+					var mensagem = $('#mensagem').val();
+
+					$.post('enviaEmail.php', {nomeContato: nomeContato, email: email, tipoContato: tipoContato, mensagem: mensagem}, function(resposta){
+
+						if(codResposta == 0)
+						{
+							$('html, body').animate({ scrollTop: 0 }, 'slow');
+							$("#alert_success").slideDown("fast").delay(4000).slideUp("slow");
+							var t = setTimeout("location.href='index.php'",4000);
 						}
 						else
 						{

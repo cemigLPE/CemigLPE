@@ -24,10 +24,10 @@
 					<div class="page-content">
 						<div class="page-header">
 							<h1>
-								Lista de Presença
+								Assine a Lista de Presença
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									Preencha os dados abaixo e clique em 'Assinar Lista'
+									Preencha seus dados
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -56,7 +56,7 @@
 						
 								<div class="widget-box">
 									<div class="widget-header">
-										<h5 class="widget-title">Dados da Reunião</h5>
+										<h5 class="widget-title">Informações do evento/reunião</h5>
 									</div>
 									<div class="widget-body">
 										<form class="from-horizontal" role="form" name="cadastro_reuniao" method="post" action="javascript:func()">
@@ -66,7 +66,7 @@
 												<div class="row">
 													<div class="col-md-8">
 														<div class="form-group">
-															<label>Nome Reunião:</label><br/>
+															<label>Título:</label><br/>
 															<input class="col-xs-12" type="text" id="nome_reuniao" name="nome_reuniao" value="<?php echo $row['nome_reuniao']; ?>" readonly />
 														</div>
 													</div>
@@ -77,7 +77,7 @@
 														</div>
 													</div>
 												</div>
-												<br/><br/>
+												<br/>
 												<div class="row">
 													<div class="col-md-4">
 														<div class="form-group">
@@ -98,56 +98,49 @@
 														</div>
 													</div>
 												</div>
-												<br/><br/>
+												<br/>
 												<div class="row">
-													<div class="col-md-6">
+													<div class="col-md-12">
 														<div class="form-group">
 															<label>Organizador:</label><br/>
 															<input class="col-xs-12" type="text" id="organizador" name="organizador" value="<?php echo $row['organizador']; ?>" readonly />
 														</div>
 													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>E-mail:</label><br/>
-															<input class="col-xs-12" type="text" id="email" name="email" value="<?php echo $row['email']; ?>" readonly />
-														</div>
-													</div>
 												</div>
-												<br/><br/>
+												<br/>
 												<div class="row">
 													<div class="col-md-3">
 														<div class="form-group">
-															<label>Matrícula:</label><br/>
-															<input class="col-xs-12" type="text" id="matricula" name="matricula" />
+															<label>Nº de Matrícula/RG:</label><br/>
+															<input class="col-xs-12" type="text" id="matricula" name="matricula" tabindex="1" autofocus />
 														</div>
 													</div>
 													<div class="col-md-9">
 														<div class="form-group">
 															<label>Nome Completo:</label><br/>
-															<input class="col-xs-12" type="text" id="nome_completo" name="nome_completo" />
+															<input class="col-xs-12" type="text" id="nome_completo" name="nome_completo" tabindex="2" />
 														</div>
 													</div>
 												</div>
-												<br/><br/>
+												<br/>
 												<div class="row">
 													<div class="col-md-4">
 														<div class="form-group">
-															<label>Função:</label><br/>
-															<input class="col-xs-12" type="text" id="funcao" name="funcao" />
+															<label>Cargo/Função:</label><br/>
+															<input class="col-xs-12" type="text" id="funcao" name="funcao" tabindex="3" />
 														</div>
 													</div>
 													<div class="col-md-8">
 														<div class="form-group">
-															<label>Empresa:</label><br/>
-															<input class="col-xs-12" type="text" id="empresa" name="empresa" />
+															<label>Departamento/Empresa:</label><br/>
+															<input class="col-xs-12" type="text" id="empresa" name="empresa" tabindex="4" />
 														</div>
 													</div>
 												</div>
-												<br/><br/>
+												<br/>
 												<div class="widget-tools clearfix">
-													<button id="assinar_lista" class="btn btn-block btn-success">Assinar Lista</button>
-												</div>
-												
+													<button id="assinar_lista" class="btn btn-block btn-success" tabindex="5">Assinar Lista</button>
+												</div>												
 											</div>
 										</form>							
 									</div>							
@@ -159,19 +152,6 @@
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
-
-			<div class="footer">
-				<div class="footer-inner">
-					<div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">TI/SI - CEMIG</span>
-							&copy; 2016
-						</span>
-					</div>
-				</div>
-			</div>
-
-		</div><!-- /.main-container -->
 
 <?php
 
